@@ -4,10 +4,8 @@ import maps.HomeMap;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.Assert;
+import org.testng.annotations.*;
 import steps.HomeStep;
 
 import java.time.Duration;
@@ -35,5 +33,23 @@ public class WebTest {
     public void acessarHomePageURL(@Optional("https://automationexercise.com/")String url){
         homeStep
                 .acessarURL(url);
+
+        Assert.assertEquals(url,driver.getCurrentUrl());
+    }
+    @Test
+    @Parameters({"url","email","password"})
+    public void realizarLogin(@Optional("https://automationexercise.com/")String url,
+                              @Optional("a@a.com")String email,
+                              @Optional("123456")String password){
+        homeStep
+                .acessarURL(url)
+                .acessarLoginPage()
+                .loginHome(email,password);
+
+    }
+
+    @AfterTest
+    public void tearDown(){
+        driver.quit();
     }
 }
