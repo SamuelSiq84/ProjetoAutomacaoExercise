@@ -1,8 +1,11 @@
 package tests;
 
 import maps.HomeMap;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -37,14 +40,17 @@ public class WebTest {
         Assert.assertEquals(url,driver.getCurrentUrl());
     }
     @Test
-    @Parameters({"url","email","password"})
+    @Parameters({"url","nome","email","password"})
     public void realizarLogin(@Optional("https://automationexercise.com/")String url,
-                              @Optional("a@a.com")String email,
+                              @Optional("Samuel") String nome,
+                              @Optional("samuel.siqueira.pereira@gmail.com")String email,
                               @Optional("123456")String password){
         homeStep
                 .acessarURL(url)
                 .acessarLoginPage()
-                .loginHome(email,password);
+                .loginHome(email,password)
+                .validarLogin(nome);
+        Assert.assertEquals(url,driver.getCurrentUrl());
 
     }
 

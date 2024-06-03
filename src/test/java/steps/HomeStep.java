@@ -13,16 +13,21 @@ public class HomeStep extends HomeMap {
     HomeMap homeMap = new HomeMap(driver);
 
     public HomeStep acessarURL(String url){
-        driver.get(url);
-        return this;
+    driver.get(url);
+    return this;
     }
     public HomeStep acessarLoginPage(){
-        btnLogin.click();
-        return this;
+    btnLoginHome.click();
+    return this;
     }
     public HomeStep loginHome(String email, String password){
     campoEmail.sendKeys(email);
     campoPassword.sendKeys(password);
+    btnSubmit.click();
+    return this;
+    }
+    public HomeStep validarLogin(String nome){
+        driver.findElement(By.xpath("//b[contains(text(), '" + nome + "')]"));
         return this;
     }
 }
