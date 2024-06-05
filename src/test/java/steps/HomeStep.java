@@ -30,4 +30,12 @@ public class HomeStep extends HomeMap {
         driver.findElement(By.xpath("//b[contains(text(), '" + nome + "')]"));
         return this;
     }
+    public HomeStep acessarHomeProducts(){
+        btnProducts.click();
+        return this;
+    }
+    public HomeStep validarPageProducts(){
+        driver.findElement(By.xpath("//h2[contains(text(), 'All Products')]"));
+        return this;
+    }
 }

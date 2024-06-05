@@ -29,6 +29,9 @@ public class HomeMap extends BasePage {
     @FindBy(xpath = "//a[contains(., ' Logout')]")
     public WebElement lblLogoutHome;
 
+    @FindBy(xpath = "//a[contains(text(), ' Products')]")
+    public WebElement btnProducts;
+
 
 
 }

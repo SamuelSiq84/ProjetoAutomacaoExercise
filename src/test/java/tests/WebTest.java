@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import steps.HomeStep;
+import steps.ProdutoStep;
 
 import java.time.Duration;
 
@@ -19,6 +20,7 @@ public class WebTest {
     WebDriverWait wait;
     HomeStep homeStep;
     HomeMap homeMap;
+    ProdutoStep produtoStep;
 
     @BeforeTest
     public void setup(){
@@ -29,6 +31,7 @@ public class WebTest {
 
         homeMap = new HomeMap(driver);
         homeStep = new HomeStep(driver);
+        produtoStep = new ProdutoStep(driver);
     }
 
     @Test
@@ -53,9 +56,18 @@ public class WebTest {
         Assert.assertEquals(url,driver.getCurrentUrl());
 
     }
-
+    @Test
+    @Parameters({"url"})
+    public void RealizarBuscaPorNomeProduto(@Optional("https://automationexercise.com/")String url) {
+        homeStep
+                .acessarURL(url)
+                .acessarHomeProducts();
+//                .validarPageProducts();
+        produtoStep
+                .fecharIframeAd();
+    }
     @AfterTest
     public void tearDown(){
-        driver.quit();
+        //driver.quit();
     }
 }
