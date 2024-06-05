@@ -24,7 +24,7 @@ public class WebTest {
 
     @BeforeTest
     public void setup(){
-        System.setProperty("webdriver.chrome.driver","src/test/java/drivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","src/test/java/drivers/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
