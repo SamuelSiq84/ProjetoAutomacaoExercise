@@ -9,9 +9,13 @@ public class ProdutoMap extends BasePage {
     public ProdutoMap(WebDriver driver) {
         super(driver);
     }
-//    @FindBy(id = "ad_position_box")
-//    public WebElement iframeAd;
+    @FindBy(id = "search_product")
+    public WebElement campoBuscarProduto;
 
-    @FindBy(xpath = "//div[contains(@class, 'ns-gyvng-e-15')]")
-    public WebElement fecharAd;
+    @FindBy(id = "submit_search")
+    public WebElement btnBuscarProduto;
+
+
+
+
 }

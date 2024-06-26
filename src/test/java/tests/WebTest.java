@@ -57,15 +57,22 @@ public class WebTest {
 
     }
     @Test
-    @Parameters({"url"})
-    public void RealizarBuscaPorNomeProduto(@Optional("https://automationexercise.com/")String url) {
+    @Parameters({"url","produto"})
+    public void RealizarBuscaPorNomeProduto(@Optional("https://automationexercise.com/")String url,
+                                            @Optional("Half Sleeves Top Schiffli Detailing - Pink")String produto) {
         homeStep
                 .acessarURL(url)
                 .acessarHomeProducts();
-//                .validarPageProducts();
+
         produtoStep
-                .fecharIframeAd();
-    }
+                .fecharIframeAd()
+                .validarPageProducts()
+                .buscarProduto(produto);
+        Assert.assertEquals(produto,driver.findElement(By.xpath("//h2[contains(text(), "+ produto +")]")));
+
+     }
+
+
     @AfterTest
     public void tearDown(){
         //driver.quit();
