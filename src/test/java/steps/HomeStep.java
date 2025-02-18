@@ -34,5 +34,10 @@ public class HomeStep extends HomeMap {
         btnProducts.click();
         return this;
     }
+//    public HomeStep acessarHomeProducts(){
+//        btnProducts.click();
+//        return this;
+//    }
+
 
 }

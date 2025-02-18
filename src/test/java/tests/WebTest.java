@@ -76,6 +76,6 @@ public class WebTest {
 
     @AfterTest
     public void tearDown(){
-        //driver.quit();
+        driver.quit();
     }
 }
