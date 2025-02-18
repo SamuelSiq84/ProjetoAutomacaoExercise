@@ -6,11 +6,11 @@ pipeline {
     @hourly'''
     }
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
 
-                sh './gradlew clean test'
-                sh 'make check || true'
+                sh 'mvn test'
+
             }
             post {
                 always {
