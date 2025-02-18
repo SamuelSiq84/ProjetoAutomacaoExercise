@@ -28,6 +28,8 @@ public class ProdutoStep extends ProdutoMap {
         campoBuscarProduto.sendKeys(produto);
         btnBuscarProduto.click();
         resolvers.scrollDownPageProdutos();
+        btnViewDetailsProduct.click();
+
 
 
         return this;

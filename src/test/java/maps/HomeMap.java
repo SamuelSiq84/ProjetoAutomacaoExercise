@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import javax.xml.xpath.XPath;
+
 
 public class HomeMap extends BasePage {
     public HomeMap(WebDriver driver) {
@@ -31,6 +33,7 @@ public class HomeMap extends BasePage {
 
     @FindBy(xpath = "//a[contains(text(), ' Products')]")
     public WebElement btnProducts;
+
 
 
 

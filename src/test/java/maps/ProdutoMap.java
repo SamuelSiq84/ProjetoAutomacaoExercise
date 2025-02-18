@@ -15,6 +15,10 @@ public class ProdutoMap extends BasePage {
     @FindBy(id = "submit_search")
     public WebElement btnBuscarProduto;
 
+    @FindBy(xpath = "//i[contains(@class, 'fa fa-plus-square')]")
+    public WebElement btnViewDetailsProduct;
+
+
 
 
 
