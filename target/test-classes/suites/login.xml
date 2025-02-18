@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite Web busca por produto" verbose="1" parallel="false" thread-count="2">
+    <test name="Realizar busca por nome de produto">
+        <parameter name="url" value="google.com"/>
+        <parameter name="produto" value="Half Sleeves Top Schiffli Detailing - Pink"/>
+        <classes>
+            <class name="tests.WebTest" />
+        </classes>
+    </test>
+</suite>
