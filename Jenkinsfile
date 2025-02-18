@@ -23,7 +23,7 @@ pipeline {
                     allure includeProperties:
                      false,
                      jdk: '',
-                     results: [[path: 'build/allure-results']]
+                     results: [[path: 'terget/allure-results']]
                 }
             }
         }
