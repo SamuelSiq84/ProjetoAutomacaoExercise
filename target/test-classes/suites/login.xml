@@ -5,6 +5,7 @@
         <parameter name="produto" value="Half Sleeves Top Schiffli Detailing - Pink"/>
         <classes>
             <class name="tests.WebTest" />
+
         </classes>
     </test>
 </suite>
