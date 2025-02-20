@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/seu-repositorio.git'
+                git branch: 'feature_refactory', url: 'https://github.com/SamuelSiq84/ProjetoAutomacaoExercise.git'
             }
         }
 
