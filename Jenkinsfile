@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'feature_refactory', url: 'https://github.com/SamuelSiq84/ProjetoAutomacaoExercise.git'
+                git branch: 'main', url: 'https://github.com/seu-repositorio.git'
             }
         }
 
@@ -20,15 +20,15 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
+        stage('Run TestNG Tests') {
             steps {
                 script {
-                    sh 'mvn test'
+                    sh 'mvn test -Dsurefire.suiteXmlFiles=testng.xml'
                 }
             }
         }
 
-        stage('Generate Reports') {
+        stage('Generate Test Reports') {
             steps {
                 script {
                     sh 'mvn surefire-report:report'
@@ -36,34 +36,32 @@ pipeline {
             }
         }
 
-        stage('Publish Reports') {
+        stage('Publish Test Results') {
+            steps {
+                junit '**/target/surefire-reports/testng-results.xml'
+            }
+        }
+
+        stage('Publish HTML Reports') {
             steps {
                 publishHTML(target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: true,
                     keepAll: true,
-                    reportDir: 'target/site',
-                    reportFiles: 'surefire-report.html',
-                    reportName: 'Test Report'
+                    reportDir: 'target/surefire-reports',
+                    reportFiles: 'index.html',
+                    reportName: 'TestNG Report'
                 ])
-            }
-        }
-
-        stage('Post Actions') {
-            steps {
-                script {
-                    junit '**/target/surefire-reports/*.xml'
-                }
             }
         }
     }
 
     post {
         success {
-            echo 'Testes executados com sucesso!'
+            echo 'Testes do TestNG executados com sucesso!'
         }
         failure {
-            echo 'Os testes falharam!'
+            echo 'Falha nos testes do TestNG!'
         }
     }
 }
