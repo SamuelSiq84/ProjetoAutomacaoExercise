@@ -10,7 +10,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'mvn clean test -Dsurefire.suiteXmlFiles=resources/suites/Login_Suite.xml'
+                sh 'java -cp ".:lib/*:target/classes:target/test-classes" org.testng.TestNG resources/suites/Login_Suite.xml'
                 // Ajuste os caminhos para as bibliotecas, classes e arquivo XML conforme necessário
             }
             post {
