@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        MAVEN_HOME = tool 'Maven 3' // Defina o nome correto do Maven instalado no Jenkins
+        MAVEN_HOME = tool 'Maven 3.9.9'
     }
 
     stages {
