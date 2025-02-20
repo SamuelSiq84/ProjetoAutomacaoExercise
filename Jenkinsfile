@@ -1,42 +1,50 @@
-// // If you use the [Declarative Pipeline syntax](https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline), find the stage that runs the tests and insert a new `always` block into that stage's `post` block. This will make Allure Report run after the test launch regardless of how many tests succeeded.
-// pipeline {
-//     agent any
-//   triggers {
-//       cron '''TZ=America/Sao_Paulo
-//     @hourly'''
-//     }
-//     stages {
-//     stage('Checkout'){}
-//         steps { git 'https://github.com/SamuelSiq84/ProjetoAutomacaoExercise.git'}
-//     }
-//         stage('Run'){
-//                 steps{
-//                     sh
-//                     echo "PATH = ${PATH}"
-//                     echo "M3_HOME = ${M3_HOME}"
-//                 }
-//
-//
-//             post {
-//                 always {
-//                     allure includeProperties:
-//                      false,
-//                      jdk: '',
-//                      results: [[path: 'target/allure-results']]
-//                 }
-//             }
-//         }
-//     }
-// }
-
 pipeline {
     agent any
+
+    environment {
+        MAVEN_HOME = tool 'Maven 3' // Defina o nome correto do Maven instalado no Jenkins
+    }
+
     stages {
         stage('Checkout') {
-            steps { git 'https://github.com/SamuelSiq84/ProjetoAutomacaoExercise.git' }
+            steps {
+                git branch: 'feature_refactory', url: 'https://github.com/SamuelSiq84/ProjetoAutomacaoExercise.git'
+            }
         }
-        stage('Run Tests') {
-            steps { sh 'mvn test' }
+
+        stage('Build') {
+            steps {
+                sh "${MAVEN_HOME}/bin/mvn clean package"
+            }
+        }
+
+        stage('Testes com Allure') {
+            steps {
+                sh "${MAVEN_HOME}/bin/mvn test allure:report"
+            }
+        }
+
+        stage('Publicar Allure Report') {
+            steps {
+                allure([
+                    results: [[path: 'target/allure-results']]
+                ])
+            }
+        }
+
+        stage('Armazenar Artefato') {
+            steps {
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build e testes concluídos com sucesso!'
+        }
+        failure {
+            echo 'Ocorreu um erro no pipeline.'
         }
     }
 }
