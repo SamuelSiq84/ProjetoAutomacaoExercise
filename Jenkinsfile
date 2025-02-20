@@ -8,12 +8,6 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                sh 'mvn clean install' // Ou o comando de build do seu projeto
-            }
-        }
-
         stage('Test') {
             steps {
                 sh 'mvn clean test -Dsurefire.suiteXmlFiles=resources/suites/Login_Suite.xml'
