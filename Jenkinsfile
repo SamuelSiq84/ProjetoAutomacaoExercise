@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        MAVEN_OPTS = "-Dmaven.repo.local=.m2/repository"
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -10,37 +14,56 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "${MAVEN_HOME}/bin/mvn clean package"
+                script {
+                    sh 'mvn clean package -DskipTests'
+                }
             }
         }
 
-        stage('Testes com Allure') {
+        stage('Run Tests') {
             steps {
-                sh "${MAVEN_HOME}/bin/mvn test allure:report"
+                script {
+                    sh 'mvn test'
+                }
             }
         }
 
-        stage('Publicar Allure Report') {
+        stage('Generate Reports') {
             steps {
-                allure([
-                    results: [[path: 'target/allure-results']]
+                script {
+                    sh 'mvn surefire-report:report'
+                }
+            }
+        }
+
+        stage('Publish Reports') {
+            steps {
+                publishHTML(target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'target/site',
+                    reportFiles: 'surefire-report.html',
+                    reportName: 'Test Report'
                 ])
             }
         }
 
-        stage('Armazenar Artefato') {
+        stage('Post Actions') {
             steps {
-                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                script {
+                    junit '**/target/surefire-reports/*.xml'
+                }
             }
         }
     }
 
     post {
         success {
-            echo 'Build e testes concluídos com sucesso!'
+            echo 'Testes executados com sucesso!'
         }
         failure {
-            echo 'Ocorreu um erro no pipeline.'
+            echo 'Os testes falharam!'
         }
     }
 }
