@@ -25,16 +25,12 @@
 pipeline {
     agent any
 
-    environment {
-        ALLURE_RESULTS_DIR = 'target/allure-results'
-        TEST_SUITE = 'src/test/suites/Login_Suite.xml'  // Caminho da suíte de testes
-    }
-
-    stages {
+   stages {
 
         stage('Executar Testes') {
             steps {
-                sh "mvn test -Dsurefire.suiteXmlFiles=${TEST_SUITE}"
+                sh "/opt/maven/bin/mvn test -Dsurefire.suiteXmlFiles=src/test/suites/Login_Suite.xml"
+
             }
         }
 
