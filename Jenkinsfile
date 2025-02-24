@@ -33,7 +33,7 @@ pipeline {
     stages {
         stage('Checkout Código') {
             steps {
-                git 'https://github.com/SamuelSiq84/ProjetoAutomacaoExercise.git'  // Substitua pelo seu repositório
+                git 'https://github.com/SamuelSiq84/ProjetoAutomacaoExercise'  // Substitua pelo seu repositório
             }
         }
 
