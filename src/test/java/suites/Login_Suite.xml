@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Suite Web busca por produto" verbose="1" parallel="false" thread-count="2">
+<suite name="Suite de teste Webtest" verbose="1" parallel="false" thread-count="2">
     <test name="Realizar busca por nome de produto">
         <parameter name="url" value="https://automationexercise.com/"/>
         <parameter name="produto" value="Half Sleeves Top Schiffli Detailing - Pink"/>
@@ -7,4 +7,20 @@
             <class name="tests.WebTest" />
         </classes>
     </test>
+    <test name="Acessar a página com sucesso">
+        <parameter name="url" value="https://automationexercise.com/"/>
+        <classes>
+            <class name="tests.WebTest" />
+        </classes>
+    </test>
+    <test name="Realizar o login com sucesso">
+        <parameter name="url" value="https://automationexercise.com/"/>
+        <parameter name="nome" value="Samuel"/>
+        <parameter name="email" value="samuel.siqueira.pereira@gmail.com"/>
+        <parameter name="password" value="123456"/>
+        <classes>
+            <class name="tests.WebTest" />
+        </classes>
+    </test>
+
 </suite>
