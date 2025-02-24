@@ -27,21 +27,10 @@ pipeline {
 
     environment {
         ALLURE_RESULTS_DIR = 'target/allure-results'
-        TEST_SUITE = 'suites/Login_Suite.xml'  // Caminho da suíte de testes
+        TEST_SUITE = 'src/test/suites/Login_Suite.xml'  // Caminho da suíte de testes
     }
 
     stages {
-        stage('Checkout Código') {
-            steps {
-                git 'https://github.com/SamuelSiq84/ProjetoAutomacaoExercise'  // Substitua pelo seu repositório
-            }
-        }
-
-        stage('Compilar Projeto') {
-            steps {
-                sh 'mvn clean compile'
-            }
-        }
 
         stage('Executar Testes') {
             steps {
