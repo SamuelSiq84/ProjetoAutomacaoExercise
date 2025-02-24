@@ -29,7 +29,7 @@ pipeline {
 
         stage('Executar Testes') {
             steps {
-                sh "/opt/homebrew/bin/mvn test -Dsurefire.suiteXmlFiles=src/test/suites/Login_Suite.xml"
+                sh "/opt/homebrew/bin/mvn test -Dsurefire.suiteXmlFiles=suites/Login_Suite.xml"
 
             }
         }
