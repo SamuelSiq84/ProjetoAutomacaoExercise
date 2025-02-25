@@ -1,11 +1,7 @@
 pipeline {
     agent any
-    triggers {
-          cron '''TZ=America/Sao_Paulo
-        @hourly'''
-        }
 
-   stages {
+    stages {
 
         stage('Executar Testes') {
             steps {
@@ -14,32 +10,23 @@ pipeline {
             }
         }
 
-//         stage('Publicar Relatórios') {
-//             steps {
-//                 script {
+//                 stage('Publicar Relatórios') {
+//                     steps {
+//                         script {
 //
-//                         allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+//                                 allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
 //
+//                         }
+//                     }
 //                 }
-//             }
-//         }
     }
 
     post {
-
+        always {
             allure includeProperties:
              false,
              jdk: '',
              results: [[path: 'build/allure-results']]
-
-        always {
-            echo 'Pipeline finalizado!'
-        }
-        success {
-            echo 'Testes passaram com sucesso!'
-        }
-        failure {
-            echo 'Testes falharam!'
         }
     }
 }
