@@ -1,16 +1,16 @@
 pipeline {
     agent any
 
-    environment{
-        ALLURE_RESULTS_DIR = "target/allure-results"
-        TEST_SUITE = "src/test/java/suites/Login_Suite.xml"
-    }
+//     environment{
+//         ALLURE_RESULTS_DIR = "target/allure-results"
+//         TEST_SUITE = "src/test/java/suites/Login_Suite.xml"
+//     }
 
    stages {
 
         stage('Executar Testes') {
             steps {
-                sh "/opt/homebrew/bin/mvn test -Dsurefire.suiteXmlFiles=${TEST_SUITE}"
+                sh "/opt/homebrew/bin/mvn test -Dsurefire.suiteXmlFiles=src/test/java/suites/Login_Suite.xml"
 
             }
         }
@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     allure([
-                        results: [[path: ALLURE_RESULTS_DIR]]
+                        allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
                     ])
                 }
             }
