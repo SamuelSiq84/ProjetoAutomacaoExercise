@@ -14,18 +14,24 @@ pipeline {
             }
         }
 
-        stage('Publicar Relatórios') {
-            steps {
-                script {
-
-                        allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
-
-                }
-            }
-        }
+//         stage('Publicar Relatórios') {
+//             steps {
+//                 script {
+//
+//                         allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+//
+//                 }
+//             }
+//         }
     }
 
     post {
+        always {
+            allure includeProperties:
+             false,
+             jdk: '',
+             results: [[path: 'build/allure-results']]
+        }
         always {
             echo 'Pipeline finalizado!'
         }
