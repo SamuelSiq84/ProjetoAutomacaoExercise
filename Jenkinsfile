@@ -1,10 +1,9 @@
 pipeline {
     agent any
-
-//     environment{
-//         ALLURE_RESULTS_DIR = "target/allure-results"
-//         TEST_SUITE = "src/test/java/suites/Login_Suite.xml"
-//     }
+    triggers {
+          cron '''TZ=America/Sao_Paulo
+        @hourly'''
+        }
 
    stages {
 
