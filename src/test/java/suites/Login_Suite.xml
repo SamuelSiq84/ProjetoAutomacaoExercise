@@ -12,7 +12,7 @@
         <classes>
             <class name="tests.WebTest" >
             <methods>
-                <exclude name="acessarHomePageURL"/>
+                <include name="acessarHomePageURL"/>
             </methods>
             </class>
         </classes>
