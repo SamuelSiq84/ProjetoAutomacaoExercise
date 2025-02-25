@@ -18,9 +18,9 @@ pipeline {
         stage('Publicar Relatórios') {
             steps {
                 script {
-                    allure([
+
                         allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
-                    ])
+
                 }
             }
         }
