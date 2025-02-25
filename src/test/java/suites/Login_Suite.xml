@@ -6,7 +6,7 @@
 <!--        <classes>-->
 <!--            <class name="tests.WebTest" >-->
 <!--            <methods>-->
-<!--                <include name="acessarHomePageURL"/>-->
+<!--                <include name="acessarHomePage"/>-->
 <!--            </methods>-->
 <!--            </class>-->
 <!--        </classes>-->
@@ -20,7 +20,7 @@
         <classes>
             <class name="tests.WebTest" >
             <methods>
-                <include name="realizarLogin"/>
+                <include name="realizarLoginComSucesso"/>
             </methods>
             </class>
         </classes>
@@ -32,7 +32,7 @@
 <!--        <classes>-->
 <!--            <class name="tests.WebTest" >-->
 <!--            <methods>-->
-<!--                <include name="RealizarBuscaPorNomeProduto"/>-->
+<!--                <include name="realizarBuscaPorNomeProduto"/>-->
 <!--            </methods>-->
 <!--            </class>-->
 <!--        </classes>-->

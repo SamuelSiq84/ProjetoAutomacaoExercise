@@ -25,8 +25,15 @@ public class WebTest {
     @BeforeTest
     public void setup(){
 
+//        System.setProperty("webdriver.chrome.driver","src/test/java/drivers/chromedriver");
+//        driver = new ChromeDriver();
         System.setProperty("webdriver.chrome.driver","src/test/java/drivers/chromedriver");
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1400,800");
+        driver = new ChromeDriver(options);
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
@@ -37,7 +44,7 @@ public class WebTest {
 
     @Test
     @Parameters({"url"})
-    public void acessarHomePageURL(@Optional("https://automationexercise.com/")String url){
+    public void acessarHomePage(@Optional("https://automationexercise.com/")String url){
         homeStep
                 .acessarURL(url);
 
@@ -45,7 +52,7 @@ public class WebTest {
     }
     @Test
     @Parameters({"url","nome","email","password"})
-    public void realizarLogin(@Optional("https://automationexercise.com/")String url,
+    public void realizarLoginComSucesso(@Optional("https://automationexercise.com/")String url,
                               @Optional("Samuel") String nome,
                               @Optional("samuel.siqueira.pereira@gmail.com")String email,
                               @Optional("123456")String password){
@@ -59,7 +66,7 @@ public class WebTest {
     }
     @Test
     @Parameters({"url","produto"})
-    public void RealizarBuscaPorNomeProduto(@Optional("https://automationexercise.com/")String url,
+    public void realizarBuscaPorNomeProduto(@Optional("https://automationexercise.com/")String url,
                                             @Optional("Half Sleeves Top Schiffli Detailing - Pink")String produto) {
         homeStep
                 .acessarURL(url)

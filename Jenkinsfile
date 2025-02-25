@@ -11,20 +11,19 @@ pipeline {
         stage('Executar Testes') {
             steps {
                 sh "/opt/homebrew/bin/mvn test -Dsurefire.suiteXmlFiles=src/test/java/suites/Login_Suite.xml"
-                allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
 
             }
         }
 
-//         stage('Publicar Relatórios') {
-//             steps {
-//                 script {
-//
-//                         allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
-//
-//                 }
-//             }
-//         }
+        stage('Publicar Relatórios') {
+            steps {
+                script {
+
+                        allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+
+                }
+            }
+        }
     }
 
     post {
