@@ -10,23 +10,26 @@ pipeline {
             }
         }
 
-//                 stage('Publicar Relatórios') {
-//                     steps {
-//                         script {
-//
-//                                 allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
-//
-//                         }
-//                     }
-//                 }
+        stage('Publicar Relatórios') {
+            steps {
+                script {
+
+                        allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+
+                }
+            }
+        }
     }
 
     post {
         always {
-            allure includeProperties:
-             false,
-             jdk: '',
-             results: [[path: 'build/allure-results']]
+            echo 'Pipeline finalizado!'
+        }
+        success {
+            echo 'Testes passaram com sucesso!'
+        }
+        failure {
+            echo 'Testes falharam!'
         }
     }
 }
