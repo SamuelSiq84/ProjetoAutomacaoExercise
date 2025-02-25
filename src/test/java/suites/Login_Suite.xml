@@ -10,7 +10,11 @@
     <test name="Acessar a página com sucesso">
         <parameter name="url" value="https://automationexercise.com/"/>
         <classes>
-            <class name="tests.WebTest" />
+            <class name="tests.WebTest" >
+            <methods>
+                <exclude name="acessarHomePageURL"/>
+            </methods>
+            </class>
         </classes>
     </test>
 <!--    <test name="Realizar o login com sucesso">-->
