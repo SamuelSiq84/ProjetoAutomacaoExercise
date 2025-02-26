@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Login_Suite.xml" verbose="1" parallel="false" thread-count="2">
+<suite name="Login_Suite" verbose="1" parallel="false" thread-count="2">
 
     <test name="Acessar a Home Page com sucesso">
         <parameter name="url" value="https://automationexercise.com/"/>

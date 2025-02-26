@@ -10,7 +10,7 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-<!--        <suiteFile>Login_Suite.xml</suiteFile>-->
+        <suiteFile>Login_Suite.xml</suiteFile>
     </properties>
 
     <dependencies>
