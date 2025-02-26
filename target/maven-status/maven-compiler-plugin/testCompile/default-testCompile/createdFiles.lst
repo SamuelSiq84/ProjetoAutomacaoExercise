@@ -1,0 +1,7 @@
+tests/WebTest.class
+commons/ManipularElementosWeb.class
+steps/HomeStep.class
+maps/HomeMap.class
+maps/ProdutoMap.class
+steps/ProdutoStep.class
+configuraDriveWeb/BasePage.class
