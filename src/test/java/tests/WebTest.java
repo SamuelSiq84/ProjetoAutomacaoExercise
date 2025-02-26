@@ -25,8 +25,6 @@ public class WebTest {
     @BeforeTest
     public void setup(){
 
-//        System.setProperty("webdriver.chrome.driver","src/test/java/drivers/chromedriver");
-//        driver = new ChromeDriver();
         System.setProperty("webdriver.chrome.driver","src/test/java/drivers/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
