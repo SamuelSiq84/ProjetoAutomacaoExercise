@@ -29,7 +29,7 @@ public class WebTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--disable-gpu");
-        options.addArguments("--window-size=1400,800");
+//        options.addArguments("--window-size=1400,800");
         driver = new ChromeDriver(options);
 
         driver.manage().window().maximize();
