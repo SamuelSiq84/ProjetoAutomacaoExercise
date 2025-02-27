@@ -24,7 +24,7 @@ public class HomeStep extends HomeMap {
     return this;
     }
     public HomeStep loginHome(String email, String password){
-        System.out.println("Preenchendo email: " + email + "e password: " + password);
+        System.out.println("Preenchendo email: " + email + " e password: " + password);
     campoEmail.sendKeys(email);
     campoPassword.sendKeys(password);
         System.out.println("Clicando no botão submit do Login");

@@ -24,6 +24,7 @@ public class WebTest {
 
     @BeforeTest
     public void setup(){
+        System.out.println("Iniciando a execução com o WebDriver driver");
 
         System.setProperty("webdriver.chrome.driver","src/test/java/drivers/chromedriver");
         ChromeOptions options = new ChromeOptions();
@@ -81,6 +82,7 @@ public class WebTest {
 
     @AfterTest
     public void tearDown(){
+        System.out.println("Encerrando a execução do teste o WebDriver driver");
         driver.quit();
     }
 }
