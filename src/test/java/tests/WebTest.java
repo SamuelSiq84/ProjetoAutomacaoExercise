@@ -81,7 +81,7 @@ public class WebTest {
 
     @AfterTest
     public void tearDown(){
-        System.out.println("Encerrando a execução do teste o WebDriver driver");
+
         driver.quit();
     }
 }
