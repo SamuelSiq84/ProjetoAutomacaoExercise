@@ -32,7 +32,6 @@ public class WebTest {
         options.addArguments("--disable-gpu");
 //        options.addArguments("--window-size=1400,800");
         driver = new ChromeDriver(options);
-        System.out.println("Iniciando a execução com o WebDriver driver");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
